@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sulaiforward.com/sitemap.xml
