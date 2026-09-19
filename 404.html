@@ -11,13 +11,20 @@
     <meta property="og:url" content="https://sulaiforward.com" />
     <link rel="canonical" href="https://sulaiforward.com" />
     <link rel="icon" href="/favicon-64.png" />
+    <script>
+      (() => {
+        const mode = localStorage.getItem("theme-mode");
+        const dark = mode === "dark" || mode === null || (mode === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", dark);
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>SULAI FORWARD — Keep Becoming</title>
-    <script type="module" crossorigin src="/assets/index-Sri95zT_.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-C_uhvCvK.css">
-    <script src="/__manus__/debug-collector.js" defer></script>
+    <script type="module" crossorigin src="/assets/index-IuEi5Mo-.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CwM9POfy.css">
   </head>
   <body>
     <script id="manus-runtime">window.__MANUS_HOST_DEV__ = false;
@@ -81,6 +88,6 @@ Error generating stack: `+l.message+`
 </script>
 
     <div id="root"></div>
-    <script defer src="https://manus-analytics.com/umami" data-website-id="f71eba4a-6264-4f76-975d-a44ca8166aa9"></script>
+    <script defer src="%VITE_ANALYTICS_ENDPOINT%/umami" data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
 </html>
