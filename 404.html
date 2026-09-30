@@ -23,8 +23,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>SULAI FORWARD — Keep Becoming</title>
-    <script type="module" crossorigin src="/assets/index-CnBnJbbm.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BkggJC4p.css">
+    <script type="module" crossorigin src="/assets/index-Dvo1Oo7L.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DFJgHz8B.css">
   </head>
   <body>
     <script id="manus-runtime">window.__MANUS_HOST_DEV__ = false;
@@ -89,5 +89,27 @@ Error generating stack: `+l.message+`
 
     <div id="root"></div>
     <script defer src="%VITE_ANALYTICS_ENDPOINT%/umami" data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+    <script>
+      (() => {
+        const hide = node => {
+          if (!(node instanceof HTMLElement)) return;
+          const text = (node.textContent || "").replace(/\s+/g, " ").trim();
+          const href = (node.getAttribute("href") || node.getAttribute("src") || "").toLowerCase();
+          if (text.toLowerCase().includes("made with manus") || href.includes("manus.im") || href.includes("manus.ai")) {
+            node.style.setProperty("display", "none", "important");
+            node.setAttribute("aria-hidden", "true");
+          }
+        };
+        const scan = root => root.querySelectorAll("a,button,div,span,iframe").forEach(hide);
+        const start = () => {
+          scan(document);
+          new MutationObserver(records => records.forEach(record => record.addedNodes.forEach(node => {
+            if (node instanceof HTMLElement) { hide(node); scan(node); }
+          }))).observe(document.documentElement, { childList: true, subtree: true });
+        };
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
+        else start();
+      })();
+    </script>
   </body>
 </html>
